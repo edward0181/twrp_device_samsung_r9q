@@ -25,6 +25,15 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /init.recovery.qcom_decrypt.rc
+
+on early-init
+    start linkblobs
+
+on init
+    setprop prepdecrypt.setpatch true
+    write /sys/class/backlight/panel0-backlight/brightness 200
+
 on boot
     setprop ro.boot.vbmeta.avb_version 1.1
     setprop ro.boot.avb_version 1.1
@@ -43,7 +52,16 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    export ANDROID_ROOT /system_root
+    # Mount firmware
+    mkdir /vendor/firmware_mnt
+    mount vfat /dev/block/bootdevice/by-name/apnhlos /vendor/firmware_mnt ro
 
 #to cut charging battery path
     write /sys/class/power_supply/battery/siop_level 0
+
+service linkblobs /system/bin/linkblobs.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0

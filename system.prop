@@ -4,3 +4,14 @@ ro.board.platform=lahaina
 sys.usb.controller=a600000.dwc3
 ro.boot.dynamic_partitions=true
 ro.boot.bootdevice=1d84000.ufshc
+
+# Crypto
+ro.crypto.metadata_init_delete_all_keys.enabled=false
+ro.crypto.dm_default_key.options_format.version=2
+ro.crypto.volume.metadata.method=dm-default-key
+ro.security.keystore.keytype=sakv2,gak
+ro.hardware.keystore=mdfpp
+ro.hardware.gatekeeper=mdfpp
+
+# USB
+vendor.usb.use_ffs_mtp=1
