@@ -103,10 +103,8 @@
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
-            <instance>strongbox</instance>
         </interface>
         <fqname>@4.0::IKeymasterDevice/default</fqname>
-        <fqname>@4.0::IKeymasterDevice/strongbox</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
@@ -748,8 +746,5 @@
         </interface>
         <fqname>@3.1::ISehSupplicant/default</fqname>
     </hal>
-    <sepolicy>
-        <version>30.0</version>
-    </sepolicy>
     <kernel target-level="5"/>
 </manifest>
