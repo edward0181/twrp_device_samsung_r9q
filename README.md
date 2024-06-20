@@ -11,6 +11,7 @@ make recoveryimage
 
 Kernel source:
 to follow
+
 ## TWRP functions list
 
 Blocking checks:
@@ -26,11 +27,11 @@ Medium checks:
 - [x] UI colors (red/blue inversions)
 - [x] Screen goes off and on (T2W - Tap To Wake is broken)
 - [x] F2FS/EXT4 Support, exFAT/NTFS where supported
-- [ ] all important partitions listed in mount/backup lists
+- [x] all important partitions listed in mount/backup lists
 - [x] backup/restore to/from external (USB-OTG) storage (not supported by the device)
-- [ ] backup/restore to/from adb (https://gerrit.omnirom.org/#/c/15943/)
-- [ ] decrypt /data (This might never be fixed)
-- [ ] Correct date
+- [x] backup/restore to/from adb (https://gerrit.omnirom.org/#/c/15943/)
+- [x] decrypt /data 
+- [x] Correct date
 
 Minor checks:
 - [x] MTP export
@@ -39,7 +40,7 @@ Minor checks:
 - [x] poweroff
 - [x] battery level
 - [x] temperature
-- [ ] encrypted backups
+- [x] encrypted backups
 - [x] input devices via USB (USB-OTG) - keyboard, mouse and disks (not supported by the device)
 - [x] USB mass storage export
 - [x] set brightness
