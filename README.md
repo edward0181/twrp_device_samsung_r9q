@@ -10,7 +10,7 @@ make recoveryimage
 ```
 
 Kernel source:
-to follow
+https://github.com/edward0181/android_kernel_samsung_sm8350
 
 ## TWRP functions list
 
