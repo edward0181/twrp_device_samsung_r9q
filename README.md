@@ -1,11 +1,11 @@
-## Recovery Device Tree for the Samsung Galaxy S21 5G FE (Snapdragon)
+## PithBlack Device Tree for the Samsung Galaxy S21 5G FE (Snapdragon)
 
 ## How-to compile it:
 
 ```sh
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
-lunch twrp_r9q-eng
+lunch pb_r9q-eng
 make recoveryimage
 ```
 

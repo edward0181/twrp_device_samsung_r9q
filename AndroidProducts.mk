@@ -15,6 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/twrp_r9q.mk
+	$(LOCAL_DIR)/pb_r9q.mk
 
-COMMON_LUNCH_CHOICES := twrp_r9q-eng
+COMMON_LUNCH_CHOICES := pb_r9q-eng
