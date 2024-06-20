@@ -65,7 +65,25 @@ TARGET_KERNEL_ARCH := arm64
 # Boot
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket firmware_class.path=/vendor/firmware printk.devkmsg=on pcie_ports=compat cpuinfo.chipname=SM8350 panic=4 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := \
+	console=null \
+	androidboot.hardware=qcom \
+	androidboot.memcg=1 \
+	lpm_levels.sleep_disabled=1 \
+	video=vfb:640x400,bpp=32,memsize=3072000 \
+	msm_rtb.filter=0x237 \
+	service_locator.enable=1 \
+	androidboot.usbcontroller=a600000.dwc3 \
+	swiotlb=2048 \
+	loop.max_part=7 \
+	cgroup.memory=nokmem,nosocket \
+	firmware_class.path=/vendor/firmware \
+	printk.devkmsg=on \
+	pcie_ports=compat \
+	cpuinfo.chipname=SM8350 \
+	panic=4 \
+	androidboot.selinux=permissive
+
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_OFFSET := 0x00008000
@@ -79,14 +97,22 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --pagesize
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB) --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/r9q/bootimg.mk
 
+BOARD_ROOT_EXTRA_FOLDERS := \
+    carrier \
+    efs \
+    omr \
+    optics \
+    prism \
+    spu
+
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 262144
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 100663296
 
 # Dynamic Partitions
 BOARD_SUPER_PARTITION_SIZE := 11744051200
@@ -95,7 +121,6 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 11739856896
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product odm
 
 # System as root
-BOARD_ROOT_EXTRA_FOLDERS := cache carrier data_mirror efs keyrefuge linkerconfig omr optics prism spu
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Workaround for error copying vendor files to recovery ramdisk
